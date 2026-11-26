@@ -1,0 +1,7 @@
+name = "primary-source-worker-api"
+main = "src/worker.mjs"
+compatibility_date = "2026-11-01"
+
+[vars]
+SERVICE_NAME = "Primary-Source & Agentic Web Micro-API"
+SERVICE_VERSION = "1.0.0"

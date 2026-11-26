@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Primary-Source Macro, DeFi & Agentic Web Micro-API",
+    "version": "1.0.0",
+    "description": "Zero-key official data endpoints (FRED, DeFiLlama, GitHub Releases) plus Open Agentic Web MVP 0.3 conformance auditing."
+  },
+  "paths": {
+    "/v1/health": { "get": { "summary": "Service health and endpoint catalog", "responses": { "200": { "description": "OK" } } } },
+    "/v1/fred": {
+      "get": {
+        "summary": "Fetch latest FRED macro time-series observations as JSON",
+        "parameters": [
+          { "name": "series", "in": "query", "required": true, "schema": { "type": "string", "default": "ICSA" } },
+          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer", "default": 10 } }
+        ],
+        "responses": { "200": { "description": "Parsed FRED series JSON" } }
+      }
+    },
+    "/v1/defillama": {
+      "get": {
+        "summary": "Fetch latest DeFi protocol TVL and chain breakdown",
+        "parameters": [
+          { "name": "protocol", "in": "query", "required": true, "schema": { "type": "string", "default": "aave" } }
+        ],
+        "responses": { "200": { "description": "Protocol TVL JSON" } }
+      }
+    },
+    "/v1/github/releases": {
+      "get": {
+        "summary": "Fetch latest GitHub releases and timestamps",
+        "parameters": [
+          { "name": "repo", "in": "query", "required": true, "schema": { "type": "string", "default": "oven-sh/bun" } },
+          { "name": "limit", "in": "query", "required": false, "schema": { "type": "integer", "default": 5 } }
+        ],
+        "responses": { "200": { "description": "Releases JSON" } }
+      }
+    },
+    "/v1/agentic-audit": {
+      "get": {
+        "summary": "Audit any HTTPS site for Open Agentic Web MVP 0.3 conformance",
+        "parameters": [
+          { "name": "url", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Audit score and grade" } }
+      }
+    }
+  }
+}
